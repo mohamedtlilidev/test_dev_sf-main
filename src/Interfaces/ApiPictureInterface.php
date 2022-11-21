@@ -4,7 +4,7 @@
 namespace App\Interfaces;
 
 /**
- * Interface ApiImageServiceInterface
+ * Interface ApiPictureInterface
  * @package App\Interfaces
  */
 interface ApiPictureInterface

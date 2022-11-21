@@ -8,30 +8,20 @@ use App\Interfaces\ApiPictureInterface;
 use App\Interfaces\ApiServiceInterface;
 
 /**
- * Class ImagesFeedService
+ * Class PicturesFeedService
  * @package App\Service
  */
 class PicturesFeedService implements ApiPictureInterface
 {
 
-    /**
-     * @var FilterPictureService
-     */
-    private $filterPictureService;
+    private FilterPictureService $filterPictureService;
+
+    private FeedParserService $feedParserService;
+
+    private string $feedXssApi;
 
     /**
-     * @var FeedParserService
-     */
-    private $feedParserService;
-
-    /**
-     * @var string
-     */
-    private $feedXssApi;
-
-    /**
-     * ImagesFeedService function
-     *
+     * PicturesFeedService constructor.
      * @param string $feedXssApi
      * @param FilterPictureService $filterPictureService
      * @param FeedParserService $feedParserService
@@ -47,14 +37,12 @@ class PicturesFeedService implements ApiPictureInterface
     }
 
     /**
-     * Get All images from urls function
-     *
      * @return array
      */
     public function getPictures():array
     {
-        $images =  $this->feedParserService->getPicturesFromXss($this->feedXssApi) ?: array();
-        return $this->filterPictureService->applyfilter($images) ?: array();
+        $pictures =  $this->feedParserService->getPicturesFromXss($this->feedXssApi);
+        return $this->filterPictureService->applyfilter($pictures);
     }
 
 }

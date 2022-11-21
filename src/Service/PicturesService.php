@@ -16,19 +16,12 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
  */
 class PicturesService
 {
-    /**
-     * @var PicturesApiService
-     */
-    private $picturesApiService;
+    private PicturesApiService $picturesApiService;
+
+    private PicturesFeedService $picturesFeedService;
 
     /**
-     * @var PicturesFeedService
-     */
-    private $picturesFeedService;
-
-    /**
-     * ImagesService constructor
-     *
+     * PicturesService constructor.
      * @param PicturesApiService $picturesApiService
      * @param PicturesFeedService $picturesFeedService
      */

@@ -13,33 +13,19 @@ use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 /**
- * Class ImagesApiService
+ * Class PicturesApiService
  * @package App\Service
  */
 class PicturesApiService implements ApiPictureInterface
 {
 
-    /**
-     * ApiService variable
-     *
-     * @var ApiService
-     */
-    private $apiService;
+    private ApiService $apiService;
 
-    /**
-     * @var FilterPictureService
-     */
-    private $filterPictureService;
+    private FilterPictureService $filterPictureService;
 
-    /**
-     * @var string
-     */
-    private $apiNewsUrl;
+    private string $apiNewsUrl;
 
-    /**
-     * @var string
-     */
-    private $apiNewsCountry;
+    private string $apiNewsCountry;
 
     /**
      * @var string
@@ -47,8 +33,7 @@ class PicturesApiService implements ApiPictureInterface
     private $apiNewsKey;
 
     /**
-     * ImagesApiService constructor
-     *
+     * PicturesApiService constructor.
      * @param ApiServiceInterface $apiService
      * @param FilterPictureService $filterPictureService
      * @param string $apiNewsUrl

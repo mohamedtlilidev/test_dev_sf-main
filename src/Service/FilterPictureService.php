@@ -6,7 +6,7 @@ namespace App\Service;
 use App\Enum\ExtensionsPictureEnum;
 
 /**
- * Class FilterImageService
+ * Class FilterPictureService
  * @package App\Service
  */
 class FilterPictureService

@@ -7,7 +7,7 @@ namespace App\Service;
 use App\Interfaces\ApiServiceInterface;
 
 /**
- * Class XmlParserService
+ * Class FeedParserService
  * @package App\Service
  */
 class FeedParserService

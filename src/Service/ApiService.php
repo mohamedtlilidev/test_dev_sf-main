@@ -18,10 +18,8 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
  */
 class ApiService implements ApiServiceInterface
 {
-    /**
-     * @var HttpClientInterface
-     */
-    private $httpClient;
+
+    private HttpClientInterface $httpClient;
 
     /**
      * ApiInterface constructor.
