@@ -15,20 +15,20 @@ class FilterPictureService
      * @param array $items
      * @return array
      */
-    public function applyfilter(array $items) :array
+    public function applyFilter(array $items) :array
     {
-        $images = array();
+        $pictures = array();
         $extensions = ExtensionsPictureEnum::EXTENSIONS;
 
         foreach ($items as $key => $item) {
             foreach ($extensions as $extension) {
-                if (str_contains(strtolower($item), $extension) && !in_array($item, $images)) {
-                    $images[] = $item;
+                if (str_contains(strtolower($item), $extension) && !in_array($item, $pictures)) {
+                    $pictures[] = $item;
                 }
             }
         }
 
-        return $images;
+        return $pictures;
     }
 
 }
