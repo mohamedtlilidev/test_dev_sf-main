@@ -1,0 +1,42 @@
+version:  '3.9'
+
+services:
+    php:
+        build:
+            context: docker/php
+            dockerfile: Dockerfile
+            network: host
+            args:
+                ENV: dev # choose environment (dev/test/prod)
+                TIMEZONE: Europe/Warsaw # change according to your needs
+        container_name: 'symfony.php'
+        expose:
+            - '9000'
+        restart: on-failure
+        env_file:
+            - docker/php/.env # ! create this file ! - choose environment (dev/test/prod) and copy correct template .dist file
+        volumes:
+            - './:/var/www/app:cached'
+        networks:
+            - app_network
+
+    nginx:
+        build: docker/nginx
+        container_name: 'symfony.nginx'
+        restart: on-failure
+        depends_on:
+            - php
+        volumes:
+            - './:/var/www/app:cached'
+            - './logs/nginx:/var/log/nginx'
+        ports:
+            - '8050:80'
+        networks:
+            - app_network
+
+networks:
+    app_network:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 172.24.57.0/24
